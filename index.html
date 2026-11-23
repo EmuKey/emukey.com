@@ -9,7 +9,13 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta property="og:title" content="EmuKey LLC">
 <meta property="og:description" content="Independent software company behind DesktopWiki and InCloseMail.">
-<meta property="og:image" content="https://emukey.com/assets/emukey-logo.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EmuKey">
+<meta property="og:image" content="https://emukey.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="EmuKey: productivity software for Windows">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://emukey.com/">
 <link rel="canonical" href="https://emukey.com/">
 <script>
@@ -25,190 +31,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    color-scheme: light;
-    --paper: #FAFBFA;
-    --ink: #1E2A2F;
-    --muted: #55625F;
-    --line: #DCE2E0;
-    --teal: #0F6B66;
-    --amber: #F2A93B;
-    --cap-top: #FFFFFF;
-    --cap-side: #C9D1CF;
-    --cap-edge: #B4BDBB;
-    --surface: #FFFFFF;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --paper: #151C1F;
-      --ink: #E8EDEC;
-      --muted: #A3B0AD;
-      --line: #2C383C;
-      --teal: #5FB8B1;
-      --amber: #F2A93B;
-      --cap-top: #2A3539;
-      --cap-side: #1A2226;
-      --cap-edge: #0F1416;
-      --surface: #1C2427;
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --paper: #151C1F;
-    --ink: #E8EDEC;
-    --muted: #A3B0AD;
-    --line: #2C383C;
-    --teal: #5FB8B1;
-    --amber: #F2A93B;
-    --cap-top: #2A3539;
-    --cap-side: #1A2226;
-    --cap-edge: #0F1416;
-    --surface: #1C2427;
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
-    font-size: 1.0625rem;
-    line-height: 1.6;
-  }
-  a { color: var(--teal); text-underline-offset: 3px; }
-  a:hover { text-decoration-thickness: 2px; }
-  a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
-
-  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(24px, 4vw, 56px); }
-
-  header.site {
-    display: flex; align-items: center; justify-content: space-between;
-    padding-top: 28px; padding-bottom: 28px;
-  }
-  .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
-  .brand img { width: 32px; height: 32px; border-radius: 7px; display: block; }
-  nav.site a { color: var(--muted); text-decoration: none; margin-left: 24px; font-weight: 500; }
-  nav.site a:hover { color: var(--ink); }
-  nav.site { margin-left: auto; }
-
-  /* Theme toggle, styled as a small keycap */
-  .theme-toggle {
-    flex: none;
-    margin-left: 24px;
-    width: 40px; height: 40px;
-    display: grid; place-items: center;
-    padding: 0;
-    color: var(--ink);
-    background: var(--cap-top);
-    border: 1px solid var(--cap-edge);
-    border-radius: 10px;
-    box-shadow: 0 3px 0 var(--cap-edge);
-    cursor: pointer;
-    transition: transform 80ms ease, box-shadow 80ms ease;
-  }
-  .theme-toggle:hover { color: var(--teal); }
-  .theme-toggle:active { transform: translateY(3px); box-shadow: 0 0 0 var(--cap-edge); }
-  .theme-toggle:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
-  .theme-toggle svg { width: 20px; height: 20px; }
-  .theme-toggle .sun { display: none; }
-  :root[data-theme="dark"] .theme-toggle .sun { display: block; }
-  :root[data-theme="dark"] .theme-toggle .moon { display: none; }
-  @media (prefers-reduced-motion: reduce) { .theme-toggle { transition: none; } }
-
-  /* Hero: the one memorable element, a row of keycaps */
-  .hero { padding-top: clamp(56px, 6vw, 112px); padding-bottom: clamp(72px, 7vw, 128px); }
-  .keys { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(8px, 1vw, 16px); margin: 0 0 clamp(40px, 4vw, 64px); padding: 0; list-style: none; }
-  .keys .break { display: none; }
-  @media (max-width: 600px) {
-    .keys { row-gap: 20px; }
-    .keys .break { display: block; flex-basis: 100%; height: 0; }
-    .keys .cap { width: min(24vw, 96px); font-size: min(9vw, 2.6rem); }
-  }
-  .cap {
-    width: clamp(52px, 9vw, 124px);
-    aspect-ratio: 1 / 1;
-    display: grid; place-items: center;
-    background: linear-gradient(180deg, var(--cap-top) 0%, var(--cap-top) 70%, var(--cap-side) 100%);
-    border: 1px solid var(--cap-edge);
-    border-radius: 16px;
-    box-shadow: 0 6px 0 var(--cap-edge), 0 10px 18px rgba(30, 42, 47, 0.12);
-    font-weight: 800;
-    font-size: clamp(1.5rem, 4vw, 3.4rem);
-    color: var(--ink);
-    transform: translateY(0);
-  }
-  .cap.pressed {
-    background: var(--ink);
-    color: var(--amber);
-    border-color: var(--ink);
-    box-shadow: 0 6px 0 #0E1517, 0 10px 18px rgba(30, 42, 47, 0.12);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .cap.pressed { background: var(--amber); color: #1E2A2F; border-color: var(--amber); box-shadow: 0 6px 0 #B97C1F, 0 10px 18px rgba(0, 0, 0, 0.25); }
-  }
-  :root[data-theme="dark"] .cap.pressed { background: var(--amber); color: #1E2A2F; border-color: var(--amber); box-shadow: 0 6px 0 #B97C1F, 0 10px 18px rgba(0, 0, 0, 0.25); }
-  h1 {
-    font-size: clamp(2.2rem, 2.4vw + 1.4rem, 4.4rem);
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-    font-weight: 800;
-    margin: 0 0 20px;
-    max-width: none;
-    text-align: center;
-  }
-  .lede { font-size: clamp(1.25rem, 0.5vw + 1rem, 1.5rem); color: var(--muted); max-width: none; margin: 0; text-align: center; }
-
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
-  h2 { font-size: 1.5rem; letter-spacing: -0.015em; margin: 0 0 24px; font-weight: 800; }
-  p { max-width: none; }
-
-  .product {
-    display: grid; grid-template-columns: 96px 1fr; gap: 28px; align-items: start;
-  }
-  .product .icon { width: 96px; height: 96px; display: block; border-radius: 20px; }
-  .product h3 { font-size: 1.375rem; margin: 0 0 4px; font-weight: 800; letter-spacing: -0.01em; }
-  .status { display: inline-block; font-size: 0.9375rem; font-weight: 600; color: var(--teal); margin-bottom: 12px; }
-  .product p { margin: 0 0 12px; }
-  .product + .product { margin-top: 48px; padding-top: 48px; border-top: 1px solid var(--line); }
-
-  .history { display: grid; grid-template-columns: 7rem 1fr; gap: 12px 28px; }
-  .history dt { font-weight: 800; font-size: 1.25rem; }
-  .history dd { margin: 0 0 20px; color: var(--ink); }
-
-  .company { display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); flex-wrap: wrap; }
-  .company .logo { flex: none; width: 72px; height: 72px; display: block; }
-  .company .facts { flex: 1; min-width: 260px; }
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-  .facts > div { border-left: 3px solid var(--teal); padding-left: 16px; }
-  .facts .k { font-size: 0.9375rem; color: var(--muted); }
-  .facts .v { font-weight: 600; }
-
-  @media (min-width: 1000px) {
-    section > .wrap { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: start; }
-    section h2 { margin: 4px 0 0; }
-    section { padding: 80px 0; }
-  }
-
-  footer.site { padding: 40px 0 56px; color: var(--muted); font-size: 0.9375rem; border-top: 1px solid var(--line); }
-
-  @media (max-width: 440px) {
-    .brand-name { display: none; }
-    nav.site { white-space: nowrap; }
-  }
-  @media (max-width: 360px) {
-    nav.site a { margin-left: 12px !important; font-size: 0.9375rem; }
-    .theme-toggle { margin-left: 12px !important; }
-  }
-  @media (max-width: 600px) {
-    nav.site a { margin-left: 16px; }
-    .theme-toggle { margin-left: 16px; }
-    .product { grid-template-columns: 1fr; }
-    .history { grid-template-columns: 1fr; }
-    .history dt { margin-top: 8px; }
-  }
-</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "EmuKey LLC",
+  "alternateName": "EmuKey",
+  "url": "https://emukey.com/",
+  "logo": "https://emukey.com/assets/emukey-logo.png",
+  "email": "support@emukey.com",
+  "address": { "@type": "PostalAddress", "addressCountry": "US" },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "DesktopWiki", "url": "https://desktopwiki.com/", "operatingSystem": "Windows", "applicationCategory": "BusinessApplication" } },
+    { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "InCloseMail", "url": "https://inclosemail.com/", "operatingSystem": "Windows", "applicationCategory": "CommunicationApplication" } }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/styles.css">
+<script src="/theme.js" defer></script>
 </head>
 <body>
 
@@ -280,9 +120,9 @@
 
   <section id="contact">
     <div class="wrap">
-      <h2>Company</h2>
+      <h2>Contact</h2>
       <div class="company">
-      <img class="logo" src="data:image/png;base64,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" alt="EmuKey logo" width="72" height="72">
+      <img class="logo" src="/assets/emukey-logo.png" alt="EmuKey logo" width="72" height="72">
       <div class="facts">
         <div><div class="k">Legal name</div><div class="v">EmuKey LLC</div></div>
         <div><div class="k">Located in the</div><div class="v">United States</div></div>
@@ -294,40 +134,11 @@
 </main>
 
 <footer class="site">
-  <div class="wrap">© 2026 EmuKey LLC. Microsoft 365 is a trademark of Microsoft Corporation. Windows is a trademark of the Microsoft group of companies.</div>
+  <div class="wrap">
+    <div>© 2026 EmuKey LLC. Microsoft 365 is a trademark of Microsoft Corporation. Windows is a trademark of the Microsoft group of companies.</div>
+    <nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
+  </div>
 </footer>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.querySelector('.theme-toggle');
-    var media = window.matchMedia('(prefers-color-scheme: dark)');
-
-    function label() {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      var text = 'Switch to ' + next + ' mode';
-      btn.setAttribute('aria-label', text);
-      btn.setAttribute('title', text);
-    }
-
-    btn.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
-      label();
-    });
-
-    // Follow the OS setting until the visitor picks one
-    media.addEventListener('change', function (e) {
-      var saved = null;
-      try { saved = localStorage.getItem('theme'); } catch (err) {}
-      if (saved) return;
-      root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-      label();
-    });
-
-    label();
-  })();
-</script>
 </body>
 </html>
