@@ -72,7 +72,13 @@ header.site {
   padding-top: 28px; padding-bottom: 28px;
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
-.brand img { width: 32px; height: 32px; border-radius: 7px; display: block; }
+.mark {
+  display: block; flex: none;
+  background-color: currentColor;
+  -webkit-mask: url(/assets/emukey-mark.png) center / contain no-repeat;
+  mask: url(/assets/emukey-mark.png) center / contain no-repeat;
+}
+.brand .mark { width: 34px; height: 34px; }
 nav.site a { color: var(--muted); text-decoration: none; margin-left: 24px; font-weight: 500; }
 nav.site a:hover { color: var(--ink); }
 nav.site { margin-left: auto; }
@@ -162,7 +168,7 @@ p { max-width: none; }
 .history dd { margin: 0 0 20px; color: var(--ink); }
 
 .company { display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); flex-wrap: wrap; }
-.company .logo { flex: none; width: 72px; height: 72px; display: block; }
+.company .logo { flex: none; width: 80px; height: 80px; color: var(--ink); }
 .company .facts { flex: 1; min-width: 260px; }
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
 .facts > div { border-left: 3px solid var(--teal); padding-left: 16px; }
