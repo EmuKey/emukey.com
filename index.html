@@ -120,6 +120,12 @@
   /* Hero: the one memorable element, a row of keycaps */
   .hero { padding-top: clamp(56px, 6vw, 112px); padding-bottom: clamp(72px, 7vw, 128px); }
   .keys { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(8px, 1vw, 16px); margin: 0 0 clamp(40px, 4vw, 64px); padding: 0; list-style: none; }
+  .keys .break { display: none; }
+  @media (max-width: 600px) {
+    .keys { row-gap: 20px; }
+    .keys .break { display: block; flex-basis: 100%; height: 0; }
+    .keys .cap { width: min(24vw, 96px); font-size: min(9vw, 2.6rem); }
+  }
   .cap {
     width: clamp(52px, 9vw, 124px);
     aspect-ratio: 1 / 1;
@@ -187,6 +193,14 @@
 
   footer.site { padding: 40px 0 56px; color: var(--muted); font-size: 0.9375rem; border-top: 1px solid var(--line); }
 
+  @media (max-width: 440px) {
+    .brand-name { display: none; }
+    nav.site { white-space: nowrap; }
+  }
+  @media (max-width: 360px) {
+    nav.site a { margin-left: 12px !important; font-size: 0.9375rem; }
+    .theme-toggle { margin-left: 12px !important; }
+  }
   @media (max-width: 600px) {
     nav.site a { margin-left: 16px; }
     .theme-toggle { margin-left: 16px; }
@@ -199,7 +213,7 @@
 <body>
 
 <header class="site wrap">
-  <a class="brand" href="/"><img src="/assets/logo-64.png" alt="" width="32" height="32">EmuKey</a>
+  <a class="brand" href="/" aria-label="EmuKey home"><img src="/assets/logo-64.png" alt="" width="32" height="32"><span class="brand-name">EmuKey</span></a>
   <nav class="site" aria-label="Main">
     <a href="#products">Products</a>
     <a href="#about">About</a>
@@ -217,6 +231,7 @@
       <li class="cap pressed">E</li>
       <li class="cap">m</li>
       <li class="cap">u</li>
+      <li class="break"></li>
       <li class="cap pressed">K</li>
       <li class="cap">e</li>
       <li class="cap">y</li>
